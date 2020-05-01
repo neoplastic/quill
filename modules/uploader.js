@@ -5,23 +5,23 @@ import Module from '../core/module';
 class Uploader extends Module {
   constructor(quill, options) {
     super(quill, options);
-    quill.root.addEventListener('drop', e => {
-      e.preventDefault();
-      let native;
-      if (document.caretRangeFromPoint) {
-        native = document.caretRangeFromPoint(e.clientX, e.clientY);
-      } else if (document.caretPositionFromPoint) {
-        const position = document.caretPositionFromPoint(e.clientX, e.clientY);
-        native = document.createRange();
-        native.setStart(position.offsetNode, position.offset);
-        native.setEnd(position.offsetNode, position.offset);
-      } else {
-        return;
-      }
-      const normalized = quill.selection.normalizeNative(native);
-      const range = quill.selection.normalizedToRange(normalized);
-      this.upload(range, e.dataTransfer.files);
-    });
+//     quill.root.addEventListener('drop', e => {
+//       e.preventDefault();
+//       let native;
+//       if (document.caretRangeFromPoint) {
+//         native = document.caretRangeFromPoint(e.clientX, e.clientY);
+//       } else if (document.caretPositionFromPoint) {
+//         const position = document.caretPositionFromPoint(e.clientX, e.clientY);
+//         native = document.createRange();
+//         native.setStart(position.offsetNode, position.offset);
+//         native.setEnd(position.offsetNode, position.offset);
+//       } else {
+//         return;
+//       }
+//       const normalized = quill.selection.normalizeNative(native);
+//       const range = quill.selection.normalizedToRange(normalized);
+//       this.upload(range, e.dataTransfer.files);
+//     });
   }
 
   upload(range, files) {
